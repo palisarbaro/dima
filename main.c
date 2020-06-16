@@ -298,15 +298,15 @@ void print_c(){
 const int T = 5;
 void init(){
     for(int i=0;i<N;i++) {
-        int f,w,l,h,x,y,z,pow,t,vx,vy,vz;
-        scanf("%d %d %d %d %d %d %d %d %d %d %d %d", &f, &pow, &t, &w, &l, &h, &x, &y, &z, &vx, &vy, &vz);
+        int f,w,l,h,x,y,z,pow,t,V,Vfi;
+        scanf("%d %d %d %d %d %d %d %d %d %d %d %d", &f, &pow, &t, &w, &l, &h, &x, &y, &z, &V, &Vfi);
         fi[i] = f * 2*pi/360;
         width[i] = w;
         length[i] = l;
         height[i] = h;  
-        x_c[i] = x + vx*T;
-        y_c[i] = y + vy*T;
-        z_c[i] = z + vz*T; 
+        x_c[i] = x + V*T*cos(-Vfi*2*pi/360);
+        y_c[i] = y + V*T*sin(-Vfi*2*pi/360);
+        z_c[i] = z; 
         power[i] = pow;
         td[i] = t;
     }
@@ -334,7 +334,8 @@ int main(){
     for(int i=0;i<N;i++) {
         printf("%lf %lf %lf %lf %lf %lf %lf \n", fi[i], width[i], length[i], height[i], x_c[i], y_c[i], z_c[i]);
     }
-    process(0.0,0.0);
+    //process(45*2*pi/360,45*2*pi/360);
+    process(45,45);
     write(10);
     print_c();
     free_f();
